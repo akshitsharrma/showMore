@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="mystyle291.css">
+</head>
+<body>
+    <h2>Product Detail</h2>
+    <div id="products" class="pr-style"></div>
+</body>
+<script>
+    var pr1={"name":"Maggi","price":25, offers:["Citi Credit Cards","ICICI Card"]}
+    var pr2= {"name":"Perk","price":10, offers:["Axis Credit Cards","PayTM"]}
+   var pr3= {"name":"Gems","price":15, offers:["SBI Card","PhonePe","PayTM"]}
+   var pr4={"name":"Lindt","price":90, offers:[]}
+   var pr5= {"name":"Nutties","price":12,offers:["Citi Credit Cards "]}
+    var pr6= {"name":"Pepsi","price":15, offers:["PhonePe","PayTM"]}
+     var pr7= {"name":"Coca Cola","price":15, offers:["SBI Card"]}
+      var pr8={"name":"Dairy Milk","price":10, offers:[]} 
+      var products=[pr1,pr2,pr3,pr4,pr5,pr6,pr7,pr8]
+    var detailindex=-1;
+    show();
+   function hide(i)
+   {
+       detailindex=-1;
+       show();
+   }
+    function showdetail(index)
+    {
+        console.log(products[index]);
+        detailindex=index;
+        show();
+    }
+    function show()
+    {var str="";
+        for(var i=0;i<products.length;i++)
+        {var pr=products[i];
+        var prdisplay="<div class=cell>"
+        prdisplay+="Name : "+pr.name+"<br>";
+        prdisplay+="Price : "+pr.price+"<br>";
+        if(detailindex===i)
+        {
+        prdisplay+=pr.offers.length+" Offers from <br>"
+       for(var k=0;k<pr.offers.length;k++)
+       {
+        prdisplay+=pr.offers[k]+"<br>"
+        console.log(k);}
+        prdisplay+="<button onclick=hide("+i+")>Hide Offer</button>"
+        }
+        else
+        {
+        prdisplay+="<button onclick=showdetail("+i+")>Show Offer</button>";
+        
+        }
+        prdisplay+="</div>"
+            str=str+prdisplay;
+            
+        }
+        var table=document.getElementById("products");
+        table.innerHTML=str;
+    }
+
+</script>
+</html>
